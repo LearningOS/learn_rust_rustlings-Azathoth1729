@@ -42,8 +42,8 @@ impl FromStr for Person {
         if s.len() == 0 {
             return Err(ParsePersonError::Empty);
         }
-
-        match s.split(',').collect::<Vec<&str>>() {
+        let spilt = s.split(',').collect::<Vec<&str>>();
+        match spilt[..] {
             ["", _] => Err(ParsePersonError::NoName),
             [name, age] => age
                 .parse::<usize>()
